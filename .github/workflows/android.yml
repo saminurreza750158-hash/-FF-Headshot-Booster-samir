@@ -1,3 +1,4 @@
+
 name: Build FF Headshot Booster APK
 
 on:
@@ -23,9 +24,9 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.14'
 
-      - name: Install dependencies
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -48,3 +49,4 @@ jobs:
           name: FF-Headshot-Booster-APK
           path: bin/*.apk
           if-no-files-found: error
+          
