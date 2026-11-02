@@ -19,8 +19,8 @@ android.accept_sdk_license = True
 android.debug_artifact = apk
 android.release_artifact = aab
 p4a.bootstrap = sdl2
+p4a.branch = master
 
 [buildozer]
 log_level = 2
 warn_on_root = 1
-p4a.branch = master
