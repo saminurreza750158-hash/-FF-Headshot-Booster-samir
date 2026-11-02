@@ -17,7 +17,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.progressbar import ProgressBar
 from kivy.uix.widget import Widget
-from kivy.graphics import Color, RoundedRectangle
+from kivy.graphics import Color, RoundedRectangle, Ellipse
 
 APP_TITLE = "FF HEADSHOT BOOSTER PANEL"
 DEFAULT_SETTINGS = {
