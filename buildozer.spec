@@ -1,5 +1,4 @@
 
-
 [app]
 
 title = FF HEADSHOT BOOSTER PANEL
