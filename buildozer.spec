@@ -1,32 +1,49 @@
 
-[app]
 
-title = FF HEADSHOT BOOSTER PANEL
-package.name = ffheadshotbooster
-package.domain = com.saminur
+name: Build FF Headshot Booster APK
 
-source.dir = .
-source.include_exts = py,png,jpg,kv,json,txt
-version = 1.0.0
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
-requirements = python3==3.12.9,hostpython3==3.12.9,kivy==2.3.1
+jobs:
+  build:
+    runs-on: ubuntu-22.04
 
-orientation = portrait
-fullscreen = 0
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
 
-android.permissions =
-android.api = 36
-android.minapi = 23
-android.ndk = 29
-android.archs = arm64-v8a
-android.accept_sdk_license = True
-android.debug_artifact = apk
-android.release_artifact = aab
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
 
-p4a.bootstrap = sdl2
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-[buildozer]
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev cmake libffi-dev libssl-dev automake autopoint gettext libltdl-dev
 
-log_level = 2
-warn_on_root = 1
-p4a.branch = master
+      - name: Install Buildozer
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install buildozer cython==0.29.36
+
+      - name: Build Android APK
+        run: buildozer -v android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: FF-Headshot-Booster-APK
+          path: bin/*.apk
+          if-no-files-found: error
+          
