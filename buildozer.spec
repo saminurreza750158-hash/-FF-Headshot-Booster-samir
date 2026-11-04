@@ -1,6 +1,3 @@
-
-          
-
 [app]
 
 title = FF HEADSHOT BOOSTER PANEL
@@ -8,18 +5,17 @@ package.name = ffheadshotbooster
 package.domain = com.saminur
 
 source.dir = .
-source.include_exts = py,png,jpg,kv,json,txt
+source.include_exts = py,png,jpg,kv,json,txt,ttf
 version = 1.0.0
 
-requirements = python3==3.12.9,hostpython3==3.12.9,kivy==2.3.1
+requirements = python3,kivy==2.3.1
 
 orientation = portrait
 fullscreen = 0
 
 android.permissions =
-android.api = 36
-android.minapi = 26
-android.ndk = 29
+android.api = 34
+android.minapi = 24
 android.archs = arm64-v8a
 android.accept_sdk_license = True
 android.debug_artifact = apk
